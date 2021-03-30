@@ -17,32 +17,55 @@ public class GameManager {
 		System.out.println("6. Exit");
 		System.out.println("Select one number betwwn 1-6:");
 		num = input.nextInt();
-		switch(num) {
-		case 1:
-			System.out.print("User Id:");
-			int Id = input.nextInt();
-			System.out.print("User Name:");
-			String Name = input.next();
-			System.out.print("User Level");
-			int LV = input.nextInt();
-			System.out.print("User Class");
-			String Class = input.next();
-			break;
-		case 2:
-			System.out.print("Delete Id:");	
-			int DeleteId = input.nextInt();
-			break;
-		case 3:
-			System.out.print("Edit Id:");
-			int EditId = input.nextInt();
-			break;
-		case 4:
-			System.out.print("View Id:");
-			int ViewId = input.nextInt();
-		case 5:
-		case 6: break;
+		if (num == 1) {
+			addUser();
+		}
+		else if (num == 2) {
+			deleteUser();
+		}
+		else if (num == 3) {
+			editUser();
+		}
+		else if (num == 4) {
+			viewUser();
+		}
+		else {
+			continue;
 			
 		  }
 		}
 	}
+	public static void addUser() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("User ID:");
+		int UserId = input.nextInt();
+		System.out.print("User name:");
+		String Username = input.next();
+		System.out.print("User class");
+		String Userclass = input.next();
+		System.out.print("User LV:");
+        int UserLV = input.nextInt();
+        System.out.print("User phonenumber");
+        int phone = input.nextInt();
+        System.out.print("When User Start?");
+        int day = input.nextInt();
+		
+	}
+	public static void deleteUser() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("User ID:");
+		int UserId = input.nextInt();
+	
+	}
+	public static void editUser() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("User ID:");
+		int UserId = input.nextInt();
+	}
+	public static void viewUser() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("User ID:");
+		int UserId = input.nextInt();
+	}
+	
 }
