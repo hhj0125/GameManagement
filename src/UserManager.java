@@ -1,83 +1,125 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import User.Adult;
+import User.Child;
+import User.Senior;
+import User.User;
+
 public class UserManager {
-	User user;
+	ArrayList<User> users = new ArrayList<User>();
 	Scanner input;
 	UserManager(Scanner input) {
 		this.input = input;
 	}
 	
 	public void addUser() {
-		user = new User();
-		System.out.print("User ID:");
-		user.id = input.nextInt();
-		System.out.print("User name:");
-		user.name = input.next();
-		System.out.print("User job:");
-		user.job = input.next();
-		System.out.print("User LV:");
-        user.lv = input.nextInt();
-        System.out.print("User phonenumber");
-        user.phone = input.nextInt();
-        System.out.print("When User Start?");
-        user.day = input.nextInt();
-		
+		int kind = 0;
+		User user;
+		while (kind !=1 && kind != 2 && kind !=3) {
+		System.out.println("Select User Kind:");
+		System.out.println("1 for Child:");
+		System.out.println("2 for Adult:");
+		System.out.println("3 for Senior:");
+		kind = input.nextInt();
+		if (kind == 1) {
+			user = new Child();
+			user.getUserInput(input);
+			users.add(user);
+			break;
+		}
+		else if (kind == 2) {
+			user = new Adult();
+			user.getUserInput(input);
+			users.add(user);
+			break;
+		}
+		else if (kind == 3) {
+			user = new Senior();
+			user.getUserInput(input);
+			users.add(user);
+			break;
+		}
+		else {
+			System.out.print("Select num 1~3");
+		}
+		}
+				
 	}
+	
 	public void deleteUser() {
 		System.out.print("User ID:");
 		int UserId = input.nextInt();
-		if (user == null) {
-			System.out.println("none User");
-			return;
+		int index = -1;
+		for (int i = 0; i<users.size(); i++) {
+			if (users.get(i).getId() == UserId) {
+				index = i;				
+				break;
+			}
 		}
-		if (user.id == UserId) {
-			user = null;
-			System.out.println("User deleted");
-			
-			
+		if (index >= 0) {
+			users.remove(index);
+			System.out.println("User" + UserId + "deleted");
 		}
+		else {
+				System.out.println("none User");
+				return;
+		
+
+		}
+		
 	
 	}
 	public void editUser() {
 		System.out.print("User ID:");
 		int UserId = input.nextInt();
-		if (user.id == UserId) {
+		for (int i = 0; i<users.size(); i++) {
+			User user = users.get(i);
+		if (user.getId() == UserId) {
 			System.out.println("User edits");
 			user.EditInfo();
 			int a = input.nextInt();
 			if(a == 1) {
 				System.out.println("Edit id");
-				user.id = input.nextInt();
+				int id = input.nextInt();
+				user.setId(id);
 			}
 				else if(a == 2) {
 				System.out.println("Edit name");
-				user.name = input.next();
+				String name = input.next();
+				user.setName(name);
 				}
 				else if(a == 3) {
 					System.out.println("Edit job");
-					user.job = input.next();
+					String job = input.next();
+					user.setJob(job);
 				}
 				else if(a == 4) {
 					System.out.println("Edit lv");
-					user.lv = input.nextInt();
+					int Lv = input.nextInt();
+					user.setLv(Lv);
 				}
 				else if(a == 5) {
 					System.out.println("Edit phone");
-					user.phone = input.nextInt();
+					int phone = input.nextInt();
+					user.setPhone(phone);
 				}
 				else if(a == 6) {
 					System.out.println("Edit day");
-					user.day = input.nextInt();
+					int day = input.nextInt();
+					user.setDay(day);
 				}
 			
 			
-		}
-	}
-	public void viewUser() {
-		System.out.print("User ID:");
-		int UserId = input.nextInt();
-		if (user.id == UserId) {
-			user.printInfo();
+		} // if
+	}	// for
+}
+	public void viewUsers() {
+//		System.out.print("User ID:");
+//		int UserId = input.nextInt();
+		System.out.println("# of registered Users:" + users.size());
+		for (int i = 0; i<users.size(); i++) {
+			users.get(i).printInfo();		
 		}
 	}
 

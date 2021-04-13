@@ -25,7 +25,7 @@ public class GameManager {
 			userManager.editUser();
 		}
 		else if (num == 4) {
-			userManager.viewUser();
+			userManager.viewUsers();
 		}
 		else {
 			continue;
