@@ -5,6 +5,7 @@ import User.Adult;
 import User.Child;
 import User.Senior;
 import User.User;
+import User.UserKind;
 
 public class UserManager {
 	ArrayList<User> users = new ArrayList<User>();
@@ -23,19 +24,19 @@ public class UserManager {
 		System.out.println("3 for Senior:");
 		kind = input.nextInt();
 		if (kind == 1) {
-			user = new Child();
+			user = new Child(UserKind.Child);
 			user.getUserInput(input);
 			users.add(user);
 			break;
 		}
 		else if (kind == 2) {
-			user = new Adult();
+			user = new Adult(UserKind.Adult);
 			user.getUserInput(input);
 			users.add(user);
 			break;
 		}
 		else if (kind == 3) {
-			user = new Senior();
+			user = new Senior(UserKind.Senior);
 			user.getUserInput(input);
 			users.add(user);
 			break;

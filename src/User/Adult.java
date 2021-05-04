@@ -3,6 +3,10 @@ package User;
 import java.util.Scanner;
 
 public class Adult extends User {
+	
+	public Adult(UserKind kind) {
+		super(kind);
+	}
 	public void getUserInput(Scanner input) {
 		System.out.println("This is for Adult");
 		System.out.print("User ID:");

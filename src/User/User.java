@@ -9,9 +9,14 @@ public class User {
 	protected String job;
 	protected int lv;
 	protected int phone;
+	protected int phone2;
 	protected int day;
 	
 	public User() {
+	}
+	
+	public User(UserKind kind) {
+		this.kind = kind;
 	}
 	
 	
@@ -24,6 +29,30 @@ public class User {
 		this.day = day;
 		
 	}
+	
+	public User(UserKind kind, int id, String name, String job, int lv, int phone, int day)	{
+		this.kind = kind;
+		this.id = id;
+		this.name = name;
+		this.job = job;
+		this.lv = lv;
+		this.phone = phone;
+		this.day = day;
+		
+	}
+	
+	public User(UserKind kind, int id, String name, String job, int lv, int phone, int phone2, int day)	{
+		this.kind = kind;
+		this.id = id;
+		this.name = name;
+		this.job = job;
+		this.lv = lv;
+		this.phone = phone;
+		this.phone2 = phone2;
+		this.day = day;
+		
+	}
+	
 	public UserKind getKind() {
 		return kind;
 	}
@@ -51,6 +80,10 @@ public class User {
 
 	public int getPhone() {
 		return phone;
+	}
+	
+	public int getPhone2() {
+		return phone2;
 	}
 
 
@@ -87,18 +120,40 @@ public class User {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
+	
+	public void setPhone2(int phone2) {
+		this.phone2 = phone2;
+	}
 
 
 	public void setDay(int day) {
 		this.day = day;
 	}
 
-
+    
     public void printInfo() {
-    	System.out.println("id: " + id + ", name: " + name);
+    	String skind = "none";
+    	switch(this.kind) {
+    	case Child:
+    		skind = "Child";
+    		break;
+    	case Adult:
+    		skind = "Adult";
+    		break;
+    	case Senior:
+    		skind = "Senior";
+    		break;
+    	default:
+    	}
+    	System.out.println("kind:" + skind + "id: " + id + ", name: " + name);
     	System.out.println("job: " + job + ", lv: " + lv);
     	System.out.println("phone: " + phone + ", day: " + day);
     }
+    	
+    	
+    	
+    	
+    	
 	public void EditInfo() {
     	System.out.printf("1 : id " + " 2 : name " + " 3 : job " + " 4 : lv " + " 5 : phone " + " 6 : day ");
 		

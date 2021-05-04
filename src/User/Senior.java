@@ -3,8 +3,14 @@ package User;
 import java.util.Scanner;
 
 public class Senior extends User {
+	
+	public Senior(UserKind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.println("This is for Senior");	
+		
 		
 		 char answer = 'x';
 	        while  (answer != 'y' && answer != 'Y'  && answer != 'n'  && answer != 'N') {
