@@ -2,7 +2,7 @@ package User;
 
 import java.util.Scanner;
 
-public class User {
+public abstract class  User {
 	protected UserKind kind = UserKind.Adult;
 	protected int id;
 	protected String name;
@@ -128,65 +128,9 @@ public class User {
 
 	public void setDay(int day) {
 		this.day = day;
-	}
-
-    
-    public void printInfo() {
-    	String skind = "none";
-    	switch(this.kind) {
-    	case Child:
-    		skind = "Child";
-    		break;
-    	case Adult:
-    		skind = "Adult";
-    		break;
-    	case Senior:
-    		skind = "Senior";
-    		break;
-    	default:
-    	}
-    	System.out.println("kind:" + skind + "id: " + id + ", name: " + name);
-    	System.out.println("job: " + job + ", lv: " + lv);
-    	System.out.println("phone: " + phone + ", day: " + day);
-    }
-    	
-    	
-    	
-    	
-    	
-	public void EditInfo() {
-    	System.out.printf("1 : id " + " 2 : name " + " 3 : job " + " 4 : lv " + " 5 : phone " + " 6 : day ");
-		
-	}
+	}     	   	
 	
-	public void getUserInput(Scanner input) {
-		System.out.print("User ID:");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.print("User name:");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("User job:");
-		String job = input.next();
-		this.setJob(job);
-		
-		System.out.print("User LV:");
-        int lv = input.nextInt();
-        this.setLv(lv);
-        
-        System.out.print("User phonenumber");
-        int phone = input.nextInt();
-        this.setPhone(phone);
-        
-        System.out.print("When User Start?");    
-        int day = input.nextInt();   
-        this.setDay(day);
-	}
-	
-
-		
+	public abstract void printInfo();
 	
 }
 

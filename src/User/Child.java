@@ -2,7 +2,7 @@ package User;
 
 import java.util.Scanner;
 
-public class Child extends User {
+public class Child extends User implements UserInput {
 	protected String parentPhone;
 	
 	public Child(UserKind kind) {

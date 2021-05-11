@@ -5,10 +5,11 @@ import User.Adult;
 import User.Child;
 import User.Senior;
 import User.User;
+import User.UserInput;
 import User.UserKind;
 
 public class UserManager {
-	ArrayList<User> users = new ArrayList<User>();
+	ArrayList<UserInput> users = new ArrayList<UserInput>();
 	Scanner input;
 	UserManager(Scanner input) {
 		this.input = input;
@@ -16,7 +17,7 @@ public class UserManager {
 	
 	public void addUser() {
 		int kind = 0;
-		User user;
+		UserInput userInput;
 		while (kind !=1 && kind != 2 && kind !=3) {
 		System.out.println("Select User Kind:");
 		System.out.println("1 for Child:");
@@ -24,21 +25,21 @@ public class UserManager {
 		System.out.println("3 for Senior:");
 		kind = input.nextInt();
 		if (kind == 1) {
-			user = new Child(UserKind.Child);
-			user.getUserInput(input);
-			users.add(user);
+			userInput = new Child(UserKind.Child);
+			userInput.getUserInput(input);
+			users.add(userInput);
 			break;
 		}
 		else if (kind == 2) {
-			user = new Adult(UserKind.Adult);
-			user.getUserInput(input);
-			users.add(user);
+			userInput = new Adult(UserKind.Adult);
+			userInput.getUserInput(input);
+			users.add(userInput);
 			break;
 		}
 		else if (kind == 3) {
-			user = new Senior(UserKind.Senior);
-			user.getUserInput(input);
-			users.add(user);
+			userInput = new Senior(UserKind.Senior);
+			userInput.getUserInput(input);
+			users.add(userInput);
 			break;
 		}
 		else {
@@ -75,40 +76,40 @@ public class UserManager {
 		System.out.print("User ID:");
 		int UserId = input.nextInt();
 		for (int i = 0; i<users.size(); i++) {
-			User user = users.get(i);
-		if (user.getId() == UserId) {
+			UserInput userInput = users.get(i);
+		if (userInput.getId() == UserId) {
 			System.out.println("User edits");
-			user.EditInfo();
+			System.out.printf("1 : id " + " 2 : name " + " 3 : job " + " 4 : lv " + " 5 : phone " + " 6 : day ");
 			int a = input.nextInt();
 			if(a == 1) {
 				System.out.println("Edit id");
 				int id = input.nextInt();
-				user.setId(id);
+				userInput.setId(id);
 			}
 				else if(a == 2) {
 				System.out.println("Edit name");
 				String name = input.next();
-				user.setName(name);
+				userInput.setName(name);
 				}
 				else if(a == 3) {
 					System.out.println("Edit job");
 					String job = input.next();
-					user.setJob(job);
+					userInput.setJob(job);
 				}
 				else if(a == 4) {
 					System.out.println("Edit lv");
 					int Lv = input.nextInt();
-					user.setLv(Lv);
+					userInput.setLv(Lv);
 				}
 				else if(a == 5) {
 					System.out.println("Edit phone");
 					int phone = input.nextInt();
-					user.setPhone(phone);
+					userInput.setPhone(phone);
 				}
 				else if(a == 6) {
 					System.out.println("Edit day");
 					int day = input.nextInt();
-					user.setDay(day);
+					userInput.setDay(day);
 				}
 			
 			

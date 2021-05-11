@@ -2,7 +2,7 @@ package User;
 
 import java.util.Scanner;
 
-public class Adult extends User {
+public class Adult extends User implements UserInput {
 	
 	public Adult(UserKind kind) {
 		super(kind);
@@ -32,6 +32,24 @@ public class Adult extends User {
         System.out.print("When User Start?");    
         int day = input.nextInt();   
         this.setDay(day);
-	
 	}
+	
+	 public void printInfo() {
+	    	String skind = "none";
+	    	switch(this.kind) {
+	    	case Child:
+	    		skind = "Child";
+	    		break;
+	    	case Adult:
+	    		skind = "Adult";
+	    		break;
+	    	case Senior:
+	    		skind = "Senior";
+	    		break;
+	    	default:
+	    	}
+	    	System.out.println("kind:" + skind + "id: " + id + ", name: " + name);
+	    	System.out.println("job: " + job + ", lv: " + lv);
+	    	System.out.println("phone: " + phone + ", day: " + day);
+	    }
 }
