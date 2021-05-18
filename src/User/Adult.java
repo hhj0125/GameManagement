@@ -35,7 +35,14 @@ public class Adult extends User implements UserInput {
 	}
 	
 	 public void printInfo() {
-	    	String skind = "none";
+		 String skind = getKindString();    	
+	    	System.out.println("kind:" + skind + "id: " + id + ", name: " + name);
+	    	System.out.println("job: " + job + ", lv: " + lv);
+	    	System.out.println("phone: " + phone + ", day: " + day);
+	    }
+	 
+	 public String getKindString() {
+		 String skind = "none";
 	    	switch(this.kind) {
 	    	case Child:
 	    		skind = "Child";
@@ -48,8 +55,6 @@ public class Adult extends User implements UserInput {
 	    		break;
 	    	default:
 	    	}
-	    	System.out.println("kind:" + skind + "id: " + id + ", name: " + name);
-	    	System.out.println("job: " + job + ", lv: " + lv);
-	    	System.out.println("phone: " + phone + ", day: " + day);
-	    }
+	    	return skind;
+	 }
 }
