@@ -1,8 +1,14 @@
 package User;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class  User {
+public abstract class  User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7080320751917702417L;
+	
 	protected UserKind kind = UserKind.Adult;
 	protected int id;
 	protected String name;

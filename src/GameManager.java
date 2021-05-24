@@ -1,12 +1,26 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import log.EventLogger;
 
 public class GameManager {
+	static EventLogger Logger = new EventLogger("log.txt");
+	
    public static void main(String[] args) {
+	   
 	   Scanner input = new Scanner(System.in);
-	   UserManager userManager = new UserManager(input);
+	   UserManager userManager = getObject("usermanager.ser");
+	   if(userManager == null) {
+		   userManager = new UserManager(input);
+	   }
 	   
 	   selectMenu(input, userManager);
+	   putObject(userManager, "usermanager.ser");
 	}
 
 
@@ -18,15 +32,19 @@ public class GameManager {
 		num = input.nextInt();
 		if (num == 1) {
 			userManager.addUser();
+			Logger.log("add a user");
 		}
 		else if (num == 2) {
 			userManager.deleteUser();
+			Logger.log("delete a user");
 		}
 		else if (num == 3) {
 			userManager.editUser();
+			Logger.log("edit a user");
 		}
 		else if (num == 4) {
 			userManager.viewUsers();
+			Logger.log("edit a list of user");
 		}
 		else {
 			continue;
@@ -54,5 +72,49 @@ public class GameManager {
 		System.out.println("Select one number betwwn 1-6:");
    }
    
+   public static UserManager getObject(String filename) {
+	   UserManager userManager = null;
+	   try { 
+		   FileInputStream file = new FileInputStream(filename);
+	       ObjectInputStream in = new ObjectInputStream(file);
+	       
+	       userManager = (UserManager) in.readObject();
+	       
+	       in.close();
+	       file.close();
+	       
+	       
+   } catch (FileNotFoundException e) {
+	   return userManager;
    
+   } catch (IOException e) {
+	   e.printStackTrace();
+   } catch (ClassNotFoundException e) {
+	   e.printStackTrace();
+   }
+	   
+	   return userManager;
+   
+}
+   
+   public static void putObject(UserManager userManager, String filename) {
+	   try { 
+		   FileOutputStream file = new FileOutputStream(filename);
+	       ObjectOutputStream out = new ObjectOutputStream(file);
+	       
+	       out.writeObject(userManager);
+	       
+	       out.close();
+	       file.close();
+	       
+	       
+   } catch (FileNotFoundException e) {
+	   e.printStackTrace();
+   
+   } catch (IOException e) {
+	   e.printStackTrace();
+   }
+	   
+   
+}
 }
