@@ -1,3 +1,5 @@
+package gui;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -17,12 +19,16 @@ public class UserManager implements Serializable {
 	private static final long serialVersionUID = -2406884363412594901L;
 	ArrayList<UserInput> users = new ArrayList<UserInput>();
 	transient Scanner input;
+	
+
+	
 	UserManager(Scanner input) {
 		this.input = input;
 	}
 	
 	public void addUser() {
 		int kind = 0;
+		Scanner input2 = new Scanner(System.in);
 		UserInput userInput;
 		while (kind !=1 && kind != 2 && kind !=3) { 
 		  try {
@@ -30,22 +36,22 @@ public class UserManager implements Serializable {
 		System.out.println("1 for Child:");
 		System.out.println("2 for Adult:");
 		System.out.println("3 for Senior:");
-		kind = input.nextInt();
+		kind = input2.nextInt();
 		if (kind == 1) {
 			userInput = new Child(UserKind.Child);
-			userInput.getUserInput(input);
+			userInput.getUserInput(input2);
 			users.add(userInput);
 			break;
 		}
 		else if (kind == 2) {
 			userInput = new Adult(UserKind.Adult);
-			userInput.getUserInput(input);
+			userInput.getUserInput(input2);
 			users.add(userInput);
 			break;
 		}
 		else if (kind == 3) {
 			userInput = new Senior(UserKind.Senior);
-			userInput.getUserInput(input);
+			userInput.getUserInput(input2);
 			users.add(userInput);
 			break;
 		}
@@ -69,8 +75,9 @@ public class UserManager implements Serializable {
 	
 	
 	public void deleteUser() {
+		Scanner input2 = new Scanner(System.in);
 		System.out.print("User ID:");
-		int UserId = input.nextInt();
+		int UserId = input2.nextInt();
 		int index = findIndex(UserId);
 		removefromUser(index, UserId);
 			
@@ -103,36 +110,37 @@ public class UserManager implements Serializable {
 		}
 	}
 	public void editUser() {
+		Scanner input2 = new Scanner(System.in);
 		System.out.print("User ID:");
-		int UserId = input.nextInt();
+		int UserId = input2.nextInt();
 		for (int i = 0; i<users.size(); i++) {
 			UserInput User = users.get(i);
 		if (User.getId() == UserId) {
 			System.out.println("User edits");
 			System.out.printf("1 : id " + " 2 : name " + " 3 : job " + " 4 : lv " + " 5 : phone " + " 6 : day ");
-			int a = input.nextInt();
+			int a = input2.nextInt();
 			if(a == 1) {
-				setUserID(User, input);
+				setUserID(User, input2);
 			}
 			
 				else if(a == 2) {
-					setUserName(User, input);
+					setUserName(User, input2);
 				}
 			
 				else if(a == 3) {
-					setUserJob(User, input);
+					setUserJob(User, input2);
 				}
 			
 				else if(a == 4) {
-					setUserLv(User, input);
+					setUserLv(User, input2);
 				}
 			
 				else if(a == 5) {
-					setUserPhone(User, input);
+					setUserPhone(User, input2);
 				}
 			
 				else if(a == 6) {
-					setUserDay(User, input);
+					setUserDay(User, input2);
 				}
 			
 			

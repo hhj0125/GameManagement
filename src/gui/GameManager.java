@@ -1,3 +1,5 @@
+package gui;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 import log.EventLogger;
 
 public class GameManager {
@@ -19,9 +22,11 @@ public class GameManager {
 		   userManager = new UserManager(input);
 	   }
 	   
+	   WindowFrame frame = new WindowFrame();
 	   selectMenu(input, userManager);
 	   putObject(userManager, "usermanager.ser");
 	}
+   
 
 
     public static void selectMenu(Scanner input, UserManager userManager) {

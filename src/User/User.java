@@ -26,6 +26,8 @@ public abstract class  User implements Serializable {
 	}
 	
 	
+	
+	
 	public User(int id, String name, String job, int lv, int phone, int day)	{
 		this.id = id;
 		this.name = name;
