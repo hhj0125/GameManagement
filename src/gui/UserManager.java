@@ -19,16 +19,18 @@ public class UserManager implements Serializable {
 	private static final long serialVersionUID = -2406884363412594901L;
 	ArrayList<UserInput> users = new ArrayList<UserInput>();
 	transient Scanner input;
-	
-
-	
 	UserManager(Scanner input) {
 		this.input = input;
 	}
 	
+	public void setScanner(Scanner input) {
+		this.input = input;
+	}
+	
+	
 	public void addUser() {
 		int kind = 0;
-		Scanner input2 = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		UserInput userInput;
 		while (kind !=1 && kind != 2 && kind !=3) { 
 		  try {
@@ -36,22 +38,22 @@ public class UserManager implements Serializable {
 		System.out.println("1 for Child:");
 		System.out.println("2 for Adult:");
 		System.out.println("3 for Senior:");
-		kind = input2.nextInt();
+		kind = input.nextInt();
 		if (kind == 1) {
 			userInput = new Child(UserKind.Child);
-			userInput.getUserInput(input2);
+			userInput.getUserInput(input);
 			users.add(userInput);
 			break;
 		}
 		else if (kind == 2) {
 			userInput = new Adult(UserKind.Adult);
-			userInput.getUserInput(input2);
+			userInput.getUserInput(input);
 			users.add(userInput);
 			break;
 		}
 		else if (kind == 3) {
 			userInput = new Senior(UserKind.Senior);
-			userInput.getUserInput(input2);
+			userInput.getUserInput(input);
 			users.add(userInput);
 			break;
 		}
@@ -75,9 +77,9 @@ public class UserManager implements Serializable {
 	
 	
 	public void deleteUser() {
-		Scanner input2 = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		System.out.print("User ID:");
-		int UserId = input2.nextInt();
+		int UserId = input.nextInt();
 		int index = findIndex(UserId);
 		removefromUser(index, UserId);
 			
@@ -154,6 +156,14 @@ public class UserManager implements Serializable {
 		for (int i = 0; i<users.size(); i++) {
 			users.get(i).printInfo();		
 		}
+	}
+	
+	public int size() {
+		return users.size();
+	}
+	
+	public User get(int index) {
+		return (User) users.get(index);
 	}
 	
 	public void setUserID(UserInput User, Scanner input) {

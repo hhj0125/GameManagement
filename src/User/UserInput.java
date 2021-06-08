@@ -5,6 +5,16 @@ import java.util.Scanner;
 public interface UserInput {
 	
 	public int getId();
+	
+	public String getName();
+	
+	public String getJob();
+	
+	public int getLv();
+	
+	public int getPhone();
+	
+	public int getDay();
 
 	public void setId(int id);
 	

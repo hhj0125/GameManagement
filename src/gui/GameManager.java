@@ -22,7 +22,11 @@ public class GameManager {
 		   userManager = new UserManager(input);
 	   }
 	   
-	   WindowFrame frame = new WindowFrame();
+	   else {
+		   userManager.setScanner(input);
+	   }
+	   
+	   WindowFrame frame = new WindowFrame(userManager);
 	   selectMenu(input, userManager);
 	   putObject(userManager, "usermanager.ser");
 	}

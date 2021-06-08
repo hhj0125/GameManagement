@@ -5,21 +5,21 @@ import javax.swing.JPanel;
 
 public class WindowFrame extends JFrame {
 	
+	UserManager userManager;
 
 	MenuSelection menuselection;
 	UserAdder useradder;
 	UserViewer userviewer;
-	UserManager userManager;
 
-	
-	public WindowFrame() {
+	public WindowFrame(UserManager userManager) {
 		this.setSize(500, 300); // 사이즈 설정 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // X누르면 프로그램 종료
 		this.setTitle("My Frame");
 		
+		this.userManager = userManager;
 		menuselection = new MenuSelection(this);
 		useradder = new UserAdder(this);
-		userviewer = new UserViewer(this);
+		userviewer = new UserViewer(this, this.userManager);
 		
 		this.setupPanel(menuselection);
 		
