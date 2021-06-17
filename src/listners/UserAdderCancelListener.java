@@ -8,11 +8,11 @@ import gui.UserAdder;
 import gui.UserViewer;
 import gui.WindowFrame;
 
-public class ButtonAddListener implements ActionListener {
+public class UserAdderCancelListener implements ActionListener {
 	
 	WindowFrame frame;
 	
-	public ButtonAddListener(WindowFrame frame) {
+	public UserAdderCancelListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 	
@@ -20,7 +20,7 @@ public class ButtonAddListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		frame.getContentPane().removeAll();
-		frame.getContentPane().add(frame.getUseradder());
+		frame.getContentPane().add(frame.getMenuselection());
 		frame.revalidate();
 		frame.repaint();
 	}

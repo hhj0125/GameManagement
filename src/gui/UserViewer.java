@@ -17,6 +17,42 @@ public class UserViewer extends JPanel {
 	UserManager userManager;
 	
 	
+	public UserManager getUserManager() {
+		return userManager;
+	}
+
+
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+		this.removeAll();
+		
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("Id");
+		model.addColumn("Name");
+		model.addColumn("Job");
+		model.addColumn("Lv");
+		model.addColumn("Phone");
+		model.addColumn("Day");
+		
+		for(int i=0; i< userManager.size(); i++) {
+			Vector row = new Vector();
+			UserInput ui = (UserInput) userManager.get(i);
+			row.add(ui.getId());
+			row.add(ui.getName());
+			row.add(ui.getJob());
+			row.add(ui.getLv());
+			row.add(ui.getPhone());
+			row.add(ui.getDay());
+			model.addRow(row);
+		}
+		
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		
+	    this.add(sp);
+	}
+
+
 	public UserViewer(WindowFrame frame, UserManager userManager) {
 		this.frame = frame;
 		this.userManager = userManager;

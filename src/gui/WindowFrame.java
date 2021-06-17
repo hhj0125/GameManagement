@@ -18,7 +18,7 @@ public class WindowFrame extends JFrame {
 		
 		this.userManager = userManager;
 		menuselection = new MenuSelection(this);
-		useradder = new UserAdder(this);
+		useradder = new UserAdder(this, this.userManager);
 		userviewer = new UserViewer(this, this.userManager);
 		
 		this.setupPanel(menuselection);

@@ -27,6 +27,16 @@ public class UserManager implements Serializable {
 		this.input = input;
 	}
 	
+	public void addUser(String id, String name, String job, String lv, String phone) {
+		UserInput userInput = new Adult(UserKind.Adult);
+		userInput.getUserInput(input);
+		users.add(userInput);
+	}
+	
+	public void addUser(UserInput userInput) {
+		users.add(userInput);
+	}
+	
 	
 	public void addUser() {
 		int kind = 0;
